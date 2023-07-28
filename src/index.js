@@ -33,13 +33,36 @@ import './img/vue.png'
 import './img/web_development.svg'
 
 
-import { mult, sum } from './modules/calc';
+const hamburger = document.querySelector('.hamburger'),
+   menu = document.querySelector('.menu'),
+   closeElem = document.querySelector('.menu__close'),
+   itemClose = document.querySelector('.menu__list');
 
-const imgWrap = document.querySelector('.img');
-const img = new Image();
-img.src = code;
-img.width = 700;
-imgWrap.append(img);
 
-console.log(mult(3, 4));
-console.log(sum(3, 4));
+hamburger.addEventListener('click', () => {
+   menu.classList.add('active');
+});
+
+itemClose.addEventListener('click', () => {
+   menu.classList.remove('active');
+});
+closeElem.addEventListener('click', () => {
+   menu.classList.remove('active');
+});
+
+
+const counters = document.querySelectorAll('.skills__ratings-counter'),
+   lines = document.querySelectorAll('.skills__ratings-line span');
+
+counters.forEach((item, i) => {
+   lines[i].style.width = item.innerHTML;
+});
+
+$(window).scroll(function () {
+   if ($(this).scrollTop() > 1000) {
+      $('.pageup').fadeIn();
+   } else {
+      $('.pageup').fadeOut();
+   }
+
+});
